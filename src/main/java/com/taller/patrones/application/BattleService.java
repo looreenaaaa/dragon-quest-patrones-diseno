@@ -3,6 +3,8 @@ package com.taller.patrones.application;
 import com.taller.patrones.domain.Attack;
 import com.taller.patrones.domain.Battle;
 import com.taller.patrones.domain.Character;
+import com.taller.patrones.domain.factory.AttackFactory;
+import com.taller.patrones.domain.factory.TackleAttack;
 import com.taller.patrones.infrastructure.combat.CombatEngine;
 import com.taller.patrones.infrastructure.persistence.BattleRepository;
 
@@ -58,7 +60,7 @@ public class BattleService {
         Battle battle = battleRepository.findById(battleId);
         if (battle == null || battle.isFinished() || battle.isPlayerTurn()) return;
 
-        Attack attack = combatEngine.createAttack(attackName != null ? attackName : "TACKLE");
+        Attack attack = combatEngine.createAttack(attackName);
         int damage = combatEngine.calculateDamage(battle.getEnemy(), battle.getPlayer(), attack);
         applyDamage(battle, battle.getEnemy(), battle.getPlayer(), damage, attack);
     }
