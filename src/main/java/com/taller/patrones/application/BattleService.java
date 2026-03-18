@@ -4,6 +4,7 @@ import com.taller.patrones.domain.Attack;
 import com.taller.patrones.domain.Battle;
 import com.taller.patrones.domain.Character;
 import com.taller.patrones.domain.factory.AttackFactory;
+import com.taller.patrones.domain.factory.AttackRegistry;
 import com.taller.patrones.domain.factory.TackleAttack;
 import com.taller.patrones.infrastructure.combat.CombatEngine;
 import com.taller.patrones.infrastructure.persistence.BattleRepository;
@@ -21,6 +22,7 @@ public class BattleService {
 
     private final CombatEngine combatEngine = new CombatEngine();
     private final BattleRepository battleRepository = new BattleRepository();
+    private final AttackRegistry attackRegistry = new AttackRegistry();
 
     public static final List<String> PLAYER_ATTACKS = List.of("TACKLE", "SLASH", "FIREBALL", "ICE_BEAM", "POISON_STING", "THUNDER");
     public static final List<String> ENEMY_ATTACKS = List.of("TACKLE", "SLASH", "FIREBALL");
@@ -51,7 +53,10 @@ public class BattleService {
         Battle battle = battleRepository.findById(battleId);
         if (battle == null || battle.isFinished() || !battle.isPlayerTurn()) return;
 
-        Attack attack = combatEngine.createAttack(attackName);
+        AttackFactory attackFactory = attackRegistry.getFactory(attackName);
+
+        Attack attack = combatEngine.createAttack(attackFactory);
+
         int damage = combatEngine.calculateDamage(battle.getPlayer(), battle.getEnemy(), attack);
         applyDamage(battle, battle.getPlayer(), battle.getEnemy(), damage, attack);
     }
@@ -60,7 +65,10 @@ public class BattleService {
         Battle battle = battleRepository.findById(battleId);
         if (battle == null || battle.isFinished() || battle.isPlayerTurn()) return;
 
-        Attack attack = combatEngine.createAttack(attackName);
+        AttackFactory attackFactory = attackRegistry.getFactory(attackName);
+
+        Attack attack = combatEngine.createAttack(attackFactory);
+
         int damage = combatEngine.calculateDamage(battle.getEnemy(), battle.getPlayer(), attack);
         applyDamage(battle, battle.getEnemy(), battle.getPlayer(), damage, attack);
     }

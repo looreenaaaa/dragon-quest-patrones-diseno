@@ -8,10 +8,12 @@ com/taller/patrones/domain/factory/IceBeamAttack.class
 com/taller/patrones/domain/Battle.class
 com/taller/patrones/infrastructure/combat/CombatEngine$1.class
 com/taller/patrones/domain/Attack$AttackType.class
+com/taller/patrones/domain/factory/AttackRegistry.class
 com/taller/patrones/domain/Character.class
 com/taller/patrones/infrastructure/combat/CombatEngine.class
 com/taller/patrones/domain/factory/NormalAttack.class
 com/taller/patrones/domain/Attack.class
+com/taller/patrones/domain/factory/MeteoroAttack.class
 com/taller/patrones/application/BattleService.class
 com/taller/patrones/domain/factory/FireballAttack.class
 com/taller/patrones/domain/factory/AttackFactory.class
