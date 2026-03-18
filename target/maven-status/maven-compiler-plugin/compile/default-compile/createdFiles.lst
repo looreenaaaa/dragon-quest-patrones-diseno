@@ -1,6 +1,8 @@
+com/taller/patrones/domain/Character$Builder.class
 com/taller/patrones/infrastructure/persistence/BattleRepository.class
 com/taller/patrones/domain/attachFactory/IceBeamAttack.class
 com/taller/patrones/domain/attachFactory/TackleAttack.class
+com/taller/patrones/domain/HeroClass.class
 com/taller/patrones/application/BattleService$BattleStartResult.class
 com/taller/patrones/domain/attachFactory/NormalAttack.class
 com/taller/patrones/domain/Battle.class

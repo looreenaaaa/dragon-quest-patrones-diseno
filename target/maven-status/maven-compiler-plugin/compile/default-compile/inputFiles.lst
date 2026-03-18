@@ -15,6 +15,7 @@
 /home/lorenappff/NEXT DIGITAL/PATRONES DE DISEÑO/II/dragon-quest-patrones-diseno/src/main/java/com/taller/patrones/domain/damageStrategy/NormalDamage.java
 /home/lorenappff/NEXT DIGITAL/PATRONES DE DISEÑO/II/dragon-quest-patrones-diseno/src/main/java/com/taller/patrones/CombatSimulatorApplication.java
 /home/lorenappff/NEXT DIGITAL/PATRONES DE DISEÑO/II/dragon-quest-patrones-diseno/src/main/java/com/taller/patrones/domain/Attack.java
+/home/lorenappff/NEXT DIGITAL/PATRONES DE DISEÑO/II/dragon-quest-patrones-diseno/src/main/java/com/taller/patrones/domain/HeroClass.java
 /home/lorenappff/NEXT DIGITAL/PATRONES DE DISEÑO/II/dragon-quest-patrones-diseno/src/main/java/com/taller/patrones/domain/attachFactory/AttackFactory.java
 /home/lorenappff/NEXT DIGITAL/PATRONES DE DISEÑO/II/dragon-quest-patrones-diseno/src/main/java/com/taller/patrones/domain/attachFactory/NormalAttack.java
 /home/lorenappff/NEXT DIGITAL/PATRONES DE DISEÑO/II/dragon-quest-patrones-diseno/src/main/java/com/taller/patrones/domain/attachFactory/PoisonStingAttack.java
