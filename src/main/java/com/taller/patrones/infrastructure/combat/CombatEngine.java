@@ -2,7 +2,13 @@ package com.taller.patrones.infrastructure.combat;
 
 import com.taller.patrones.domain.Attack;
 import com.taller.patrones.domain.Character;
-import com.taller.patrones.domain.factory.AttackFactory;
+import com.taller.patrones.domain.attachFactory.AttackFactory;
+import com.taller.patrones.domain.damageStrategy.CriticalDamage;
+import com.taller.patrones.domain.damageStrategy.NormalDamage;
+import com.taller.patrones.domain.damageStrategy.SpecialDamage;
+import com.taller.patrones.domain.damageStrategy.StatusDamage;
+
+import java.awt.image.CropImageFilter;
 
 /**
  * Motor de combate. Calcula daño y crea ataques.
@@ -25,17 +31,10 @@ public class CombatEngine {
      */
     public int calculateDamage(Character attacker, Character defender, Attack attack) {
         return switch (attack.getType()) {
-            case NORMAL -> {
-                int raw = attacker.getAttack() * attack.getBasePower() / 100;
-                yield Math.max(1, raw - defender.getDefense());
-            }
-            case SPECIAL -> {
-                int raw = attacker.getAttack() * attack.getBasePower() / 100;
-                int effectiveDef = defender.getDefense() / 2;
-                yield Math.max(1, raw - effectiveDef);
-            }
-            case STATUS -> attacker.getAttack(); // Los de estado no hacen daño directo... ¿o sí?
-            default -> 0;
+            case NORMAL -> new NormalDamage().calculate(attacker, defender, attack);
+            case SPECIAL -> new SpecialDamage().calculate(attacker, defender, attack);
+            case STATUS -> new StatusDamage().calculate(attacker, defender, attack);
+            case CRITICAL -> new CriticalDamage().calculate(attacker, defender, attack);
         };
     }
 }

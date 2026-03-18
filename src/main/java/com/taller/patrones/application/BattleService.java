@@ -3,9 +3,8 @@ package com.taller.patrones.application;
 import com.taller.patrones.domain.Attack;
 import com.taller.patrones.domain.Battle;
 import com.taller.patrones.domain.Character;
-import com.taller.patrones.domain.factory.AttackFactory;
-import com.taller.patrones.domain.factory.AttackRegistry;
-import com.taller.patrones.domain.factory.TackleAttack;
+import com.taller.patrones.domain.attachFactory.AttackFactory;
+import com.taller.patrones.domain.attachFactory.AttackRegistry;
 import com.taller.patrones.infrastructure.combat.CombatEngine;
 import com.taller.patrones.infrastructure.persistence.BattleRepository;
 
