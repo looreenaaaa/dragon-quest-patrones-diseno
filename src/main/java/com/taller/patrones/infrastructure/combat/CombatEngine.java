@@ -2,13 +2,11 @@ package com.taller.patrones.infrastructure.combat;
 
 import com.taller.patrones.domain.Attack;
 import com.taller.patrones.domain.Character;
-import com.taller.patrones.domain.attachFactory.AttackFactory;
+import com.taller.patrones.domain.attackFactory.AttackFactory;
 import com.taller.patrones.domain.damageStrategy.CriticalDamage;
 import com.taller.patrones.domain.damageStrategy.NormalDamage;
 import com.taller.patrones.domain.damageStrategy.SpecialDamage;
 import com.taller.patrones.domain.damageStrategy.StatusDamage;
-
-import java.awt.image.CropImageFilter;
 
 /**
  * Motor de combate. Calcula daño y crea ataques.

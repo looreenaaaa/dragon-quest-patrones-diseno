@@ -4,12 +4,11 @@ import com.taller.patrones.domain.Attack;
 import com.taller.patrones.domain.Battle;
 import com.taller.patrones.domain.Character;
 import com.taller.patrones.domain.HeroClass;
-import com.taller.patrones.domain.attachFactory.AttackFactory;
-import com.taller.patrones.domain.attachFactory.AttackRegistry;
+import com.taller.patrones.domain.attackFactory.AttackFactory;
+import com.taller.patrones.domain.attackFactory.AttackRegistry;
 import com.taller.patrones.infrastructure.combat.CombatEngine;
 import com.taller.patrones.infrastructure.persistence.BattleRepository;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
