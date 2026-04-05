@@ -20,14 +20,15 @@ public class CombatEngine {
      * Cada ataque nuevo requiere modificar este método.
      */
     public Attack createAttack(AttackFactory attackFactory) {
-        return attackFactory.create();
+        return attackFactory.create(); // Ves qué limpito queda ahora? Métodos de una línea, ifs con sólo una llamada de método dentro...
+        //Es lo deseable, no siempre se puede, pero intenta acercarte lo más que puedas a eso
     }
 
     /**
      * Calcula el daño según el tipo de ataque.
      * Cada fórmula nueva (ej. crítico, veneno con tiempo) requiere modificar este switch.
      */
-    public int calculateDamage(Character attacker, Character defender, Attack attack) {
+    public int calculateDamage(Character attacker, Character defender, Attack attack) { // Muy bien
         return switch (attack.getType()) {
             case NORMAL -> new NormalDamage().calculate(attacker, defender, attack);
             case SPECIAL -> new SpecialDamage().calculate(attacker, defender, attack);
