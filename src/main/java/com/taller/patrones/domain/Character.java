@@ -20,23 +20,52 @@ public class Character {
     private List<String> temp;
     private HeroClass heroClass;
 
-    private Character() {}
-
-    public static Builder builder() {
-        return new Builder();
+    private Character() {
     }
 
-    public String getName() { return name; }
-    public int getCurrentHp() { return currentHp; }
-    public int getMaxHp() { return maxHp; }
-    public int getAttack() { return attack; }
-    public int getDefense() { return defense; }
-    public int getSpeed() { return speed; }
+    public static Builder builder() {
+        return new Builder(); // Bien
+    }
 
-    public String getEquipment() { return equipment; }
-    public List<String> getBuff() { return buff; }
-    public List<String> getTemp() { return temp; }
-    public HeroClass getHeroClass() { return heroClass; }
+    public String getName() {
+        return name;
+    }
+
+    public int getCurrentHp() {
+        return currentHp;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public String getEquipment() {
+        return equipment;
+    }
+
+    public List<String> getBuff() {
+        return buff;
+    }
+
+    public List<String> getTemp() {
+        return temp;
+    }
+
+    public HeroClass getHeroClass() {
+        return heroClass;
+    }
 
     public void takeDamage(int damage) {
         this.currentHp = Math.max(0, currentHp - damage);
@@ -108,17 +137,19 @@ public class Character {
         }
 
         public Character build() {
+            // En este método podrías añadir más comprobaciones de campos si quisieras. No había que hacerlo, pero así
+            // lo sabes
             Character character = new Character();
             character.name = name;
             character.maxHp = maxHp;
-            character.currentHp = maxHp;
+            character.currentHp = maxHp; // Bien visto
             character.attack = attack;
             character.defense = defense;
             character.speed = speed;
             character.equipment = equipment;
-            character.buff = buff != null ? buff : new ArrayList<>();
-            character.temp = temp != null ? temp : new ArrayList<>();
-            character.heroClass = heroClass != null ? heroClass : HeroClass.WARRIOR;
+            character.buff = buff != null ? buff : new ArrayList<>(); // Bien
+            character.temp = temp != null ? temp : new ArrayList<>(); // Bien
+            character.heroClass = heroClass != null ? heroClass : HeroClass.WARRIOR; // Buena comprobación
             return character;
         }
     }

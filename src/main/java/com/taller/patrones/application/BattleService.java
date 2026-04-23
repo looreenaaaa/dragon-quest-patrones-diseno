@@ -20,12 +20,12 @@ import java.util.UUID;
  */
 public class BattleService {
 
+    public static final List<String> PLAYER_ATTACKS =
+            List.of("TACKLE", "SLASH", "FIREBALL", "ICE_BEAM", "POISON_STING", "THUNDER");
+    public static final List<String> ENEMY_ATTACKS = List.of("TACKLE", "SLASH", "FIREBALL");
     private final CombatEngine combatEngine = new CombatEngine();
     private final BattleRepository battleRepository = new BattleRepository();
     private final AttackRegistry attackRegistry = new AttackRegistry();
-
-    public static final List<String> PLAYER_ATTACKS = List.of("TACKLE", "SLASH", "FIREBALL", "ICE_BEAM", "POISON_STING", "THUNDER");
-    public static final List<String> ENEMY_ATTACKS = List.of("TACKLE", "SLASH", "FIREBALL");
 
     public BattleStartResult startBattle(String playerName, String enemyName) {
         Character player = Character.builder()
@@ -61,7 +61,8 @@ public class BattleService {
         Battle battle = battleRepository.findById(battleId);
         if (battle == null || battle.isFinished() || !battle.isPlayerTurn()) return;
 
-        AttackFactory attackFactory = attackRegistry.getFactory(attackName);
+        AttackFactory attackFactory =
+                attackRegistry.getFactory(attackName); // Te he dejado comentarios en la clase, pero bien
 
         Attack attack = combatEngine.createAttack(attackFactory);
 
@@ -85,7 +86,8 @@ public class BattleService {
         defender.takeDamage(damage);
         String target = defender == battle.getPlayer() ? "player" : "enemy";
         battle.setLastDamage(damage, target);
-        battle.log(attacker.getName() + " usa " + attack.getName() + " y hace " + damage + " de daño a " + defender.getName());
+        battle.log(attacker.getName() + " usa " + attack.getName() + " y hace " + damage + " de daño a " +
+                defender.getName());
         battle.switchTurn();
         if (!defender.isAlive()) {
             battle.finish(attacker.getName());
@@ -116,5 +118,6 @@ public class BattleService {
         return new BattleStartResult(battleId, battle);
     }
 
-    public record BattleStartResult(String battleId, Battle battle) {}
+    public record BattleStartResult(String battleId, Battle battle) {
+    }
 }
